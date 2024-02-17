@@ -1,5 +1,7 @@
+import Chessboard from "./components/ChessBoard/Chessboard";
+
 export default function Home() {
   return (
-    <main>test</main>
+    <Chessboard />
   );
 }
