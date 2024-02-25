@@ -9,13 +9,16 @@ const Chessboard = () => {
   return (
     <>
       {axisY.map((y, indexY) => (
-        <div key={y.toString()} className="flex max-w-[50vw] text-green-800">
+        <div
+          key={y.toString()}
+          className="flex portrait:max-w-[100vw] landscape:max-w-[100vh] text-green-800"
+        >
           {axisX.map((x, indexX) => (
             <Plate
               coords={{ x, y }}
               indexX={indexX}
               indexY={indexY}
-              key={`${x}-${y}`}
+              key={`${x}/${y}`}
             />
           ))}
         </div>

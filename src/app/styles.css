@@ -1,5 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.none {
+  background-color: red;
+}
+
+.black {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.black__pawn {
+  background-image: url("./images/black/black_pawn.png");
+}
+.black__rook {
+  background-image: url("./images/black/black_rook.png");
+}
+.black__knight {
+  background-image: url("./images/black/black_knight.png");
+}
+.black__bishop {
+  background-image: url("./images/black/black_bishop.png");
+}
+.black__queen {
+  background-image: url("./images/black/black_queen.png");
+}
+.black__king {
+  background-image: url("./images/black/black_king.png");
+}
+
+.white {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.white__pawn {
+  background-image: url("./images/white/white_pawn.png");
+}
+.white__rook {
+  background-image: url("./images/white/white_rook.png");
+}
+.white__knight {
+  background-image: url("./images/white/white_knight.png");
+}
+.white__bishop {
+  background-image: url("./images/white/white_bishop.png");
+}
+.white__queen {
+  background-image: url("./images/white/white_queen.png");
+}
+.white__king {
+  background-image: url("./images/white/white_king.png");
+}
 
 /*# sourceMappingURL=styles.css.map */
