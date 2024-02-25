@@ -2,10 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.none {
-  // pointer-events: none;
-  background-color: red;
-}
+$axisX: "A", "B", "C", "D", "E", "F", "G", "H";
 
 .black {
   width: 100%;
@@ -54,5 +51,26 @@
   }
   &__king {
     background-image: url("./images/white/white_king.png");
+  }
+}
+
+.plate {
+  @for $i from 1 through 8 {
+    &__index-number--#{$i}::before {
+      position: absolute;
+      left: 1px;
+      top: 1px;
+      content: "#{$i}";
+      font-size: inherit;
+    }
+  }
+  @each $letter in $axisX {
+    &__index-letter--#{$letter}::after {
+      position: absolute;
+      bottom: 1px;
+      right: 1px;
+      content: "#{$letter}";
+      font-size: inherit;
+    }
   }
 }

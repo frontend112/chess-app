@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, MouseEventHandler, useRef } from "react";
 import cn from "classnames";
 
 enum Pieces {
@@ -16,6 +16,7 @@ enum Pieces {
   WHITEQUEEN = "white white__queen",
   BLACKKING = "black black__king",
   WHITEKING = "white white__king",
+  BLANK = "",
 }
 
 type Props = {
@@ -28,35 +29,38 @@ type Props = {
 };
 
 const Plate: FC<Props> = ({ coords: { x, y }, indexX, indexY }) => {
-  let currentPiece = null;
+  console.log(x, y);
+  let currentPieceImage: Pieces = Pieces.BLANK;
+
+  const currentPieceRef = useRef<HTMLDivElement>(null);
 
   if (indexY === 1) {
-    currentPiece = Pieces.BLACKPAWN;
+    currentPieceImage = Pieces.BLACKPAWN;
   }
 
   if (indexY === 6) {
-    currentPiece = Pieces.WHITEPAWN;
+    currentPieceImage = Pieces.WHITEPAWN;
   }
 
   if (indexY === 0) {
     switch (indexX) {
       case 7:
       case 0:
-        currentPiece = Pieces.BLACKROOK;
+        currentPieceImage = Pieces.BLACKROOK;
         break;
       case 6:
       case 1:
-        currentPiece = Pieces.BLACKNIGHT;
+        currentPieceImage = Pieces.BLACKNIGHT;
         break;
       case 5:
       case 2:
-        currentPiece = Pieces.BLACKBISHOP;
+        currentPieceImage = Pieces.BLACKBISHOP;
         break;
       case 3:
-        currentPiece = Pieces.BLACKQUEEN;
+        currentPieceImage = Pieces.BLACKQUEEN;
         break;
       case 4:
-        currentPiece = Pieces.BLACKKING;
+        currentPieceImage = Pieces.BLACKKING;
         break;
       default:
         break;
@@ -67,21 +71,21 @@ const Plate: FC<Props> = ({ coords: { x, y }, indexX, indexY }) => {
     switch (indexX) {
       case 7:
       case 0:
-        currentPiece = Pieces.WHITEROOK;
+        currentPieceImage = Pieces.WHITEROOK;
         break;
       case 6:
       case 1:
-        currentPiece = Pieces.WHITEKNIGHT;
+        currentPieceImage = Pieces.WHITEKNIGHT;
         break;
       case 5:
       case 2:
-        currentPiece = Pieces.WHITEBISHOP;
+        currentPieceImage = Pieces.WHITEBISHOP;
         break;
       case 3:
-        currentPiece = Pieces.WHITEQUEEN;
+        currentPieceImage = Pieces.WHITEQUEEN;
         break;
       case 4:
-        currentPiece = Pieces.WHITEKING;
+        currentPieceImage = Pieces.WHITEKING;
         break;
       default:
         break;
@@ -89,7 +93,26 @@ const Plate: FC<Props> = ({ coords: { x, y }, indexX, indexY }) => {
   }
 
   const handleMouseDown = () => {
-    console.log("clicked");
+    window.addEventListener("mousemove", (e) => {
+      if (currentPieceRef.current?.style) {
+        const currentelStyle = currentPieceRef.current.style;
+        const innerW = window.innerWidth;
+        const innerH = window.innerHeight;
+        currentelStyle.position = "absolute";
+
+        if (innerW > innerH) {
+          currentelStyle.width = `${innerW / 15}px`;
+          currentelStyle.height = `${innerW / 15}px`;
+          currentelStyle.top = `${e.clientY - innerW / 30}px`;
+          currentelStyle.left = `${e.clientX - innerW / 30}px`;
+        } else {
+          currentelStyle.width = `${innerH / 15}px`;
+          currentelStyle.height = `${innerH / 15}px`;
+          currentelStyle.top = `${e.clientY - innerH / 30}px`;
+          currentelStyle.left = `${e.clientX - innerH / 30}px`;
+        }
+      }
+    });
   };
   return (
     <div
@@ -100,15 +123,29 @@ const Plate: FC<Props> = ({ coords: { x, y }, indexX, indexY }) => {
         "landscape:w-[12vh]",
         "landscape:h-[12vh]",
         "landscape:text-[2vh]",
-        "relative",
+        "flex",
+        "plate",
         (indexX + indexY) % 2 === 0 && "bg-green-800",
         (indexX + indexY) % 2 === 0 && "text-white"
       )}
-      onMouseDown={handleMouseDown}
     >
-      <span className="absolute left-0.5 top-0.5">{indexX === 0 && y}</span>
-      <span className="absolute right-0.5 bottom-0.5">{indexY === 7 && x}</span>
-      {currentPiece && <div className={currentPiece}></div>}
+      {indexX === 0 && (
+        <span
+          className={`plate__index-number plate__index-number--${y} relative`}
+        ></span>
+      )}
+      {currentPieceImage && (
+        <div
+          className={`cursor-pointer w-full h-full justify-center items-center relative ${currentPieceImage}`}
+          ref={currentPieceRef}
+          onMouseDown={handleMouseDown}
+        ></div>
+      )}
+      {indexY === 7 && (
+        <span
+          className={`plate__index-letter plate__index-letter--${x} relative`}
+        ></span>
+      )}
     </div>
   );
 };

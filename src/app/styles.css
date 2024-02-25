@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .black {
   width: 100%;
   height: 100%;
@@ -50,6 +49,119 @@
 }
 .white__king {
   background-image: url("./images/white/white_king.png");
+}
+
+.plate__index-number--1::before {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  content: "1";
+  font-size: inherit;
+}
+.plate__index-number--2::before {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  content: "2";
+  font-size: inherit;
+}
+.plate__index-number--3::before {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  content: "3";
+  font-size: inherit;
+}
+.plate__index-number--4::before {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  content: "4";
+  font-size: inherit;
+}
+.plate__index-number--5::before {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  content: "5";
+  font-size: inherit;
+}
+.plate__index-number--6::before {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  content: "6";
+  font-size: inherit;
+}
+.plate__index-number--7::before {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  content: "7";
+  font-size: inherit;
+}
+.plate__index-number--8::before {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  content: "8";
+  font-size: inherit;
+}
+.plate__index-letter--A::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content: "A";
+  font-size: inherit;
+}
+.plate__index-letter--B::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content: "B";
+  font-size: inherit;
+}
+.plate__index-letter--C::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content: "C";
+  font-size: inherit;
+}
+.plate__index-letter--D::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content: "D";
+  font-size: inherit;
+}
+.plate__index-letter--E::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content: "E";
+  font-size: inherit;
+}
+.plate__index-letter--F::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content: "F";
+  font-size: inherit;
+}
+.plate__index-letter--G::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content: "G";
+  font-size: inherit;
+}
+.plate__index-letter--H::after {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  content: "H";
+  font-size: inherit;
 }
 
 /*# sourceMappingURL=styles.css.map */
